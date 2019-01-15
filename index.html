@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Alain Bellon">
+    <title>Leela Chess Test Reporter</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/util-min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <header class="">
+            <h4>
+                <img src="img/lc0-logo-thumb.jpg" class="img-round">
+                Leela Test Reporter
+                <small> by Alain Bellon</small>
+            </h4>
+        </header>
+
+
+        <div class="panel panel-default mt-2">
+
+            <div class="panel-heading text-center" data-toggle="collapse" data-target="#card-entry">
+                Enter Data
+                <small>(click to collapse)</small>
+            </div>
+
+            <div class="panel-body collapse show" id="card-entry">
+
+                <div class="col-8 text-right mx-auto mb-5">
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Select PGN file:</span>
+                        <select class="form-control " id="select-pgn"></select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Anchor:</span>
+                        <select class="form-control" id="select-anchor"></select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Anchor Rating:</span>
+                        <input class="form-control" id="input-rating" value="0">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Match:</span>
+                        <textarea class="form-control" id="input-match" placeholder="Match/Gauntlet/Round-Robin/Tuning etc."></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">LC0 Version:</span>
+                        <input class="form-control" id="input-lc0version" placeholder="e.g. v0.20.1-rc1 + other engine's names and versions">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">LC0 Options:</span>
+                        <textarea class="form-control" id="input-lc0options" placeholder="Network Id, non-default parameters, etc."></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Time Control:</span>
+                        <input class="form-control" id="input-tc" placeholder="e.g. 2m+1s">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Hardware:</span>
+                        <textarea class="form-control" id="input-hardware" placeholder="CPU + GPU for Leela and other engines"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Speed:</span>
+                        <input class="form-control" id="input-speed" placeholder="A0(Leela) ratio/nps/nps ratio/nodes per move">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Book:</span>
+                        <textarea class="form-control" id="input-book" placeholder="Opening book used"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Tablebases:</span>
+                        <textarea class="form-control" id="input-tb" placeholder="Tablebases used"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Adjudication:</span>
+                        <textarea class="form-control" id="input-adjudication" placeholder="e.g. Draw: eval<0.05 for 5mv, Win: +9 for 5mv"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Software:</span>
+                        <input class="form-control" id="input-software" placeholder="Cutechess/Arena/FritzGUI/Octagon/etc.">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon">Comments:</span>
+                        <textarea class="form-control" id="input-comments"></textarea>
+                    </div>
+
+                    <button class="col btn btn-primary mt-3" id="btn-report" data-toggle="collapse" data-target="#card-entry">
+                        Generate report
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default mt-2">
+
+            <div class="panel-heading text-center">Report</div>
+            <div class="panel-body" id="card-report">
+                <pre class="gui-label" id="label-results">No results...</pre>
+            </div>
+
+        </div>
+
+        <div class="overlay gui-visible" id="welcome-overlay">
+            <div class="container col-8 text-center mt-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h3 class="m-0">
+                            <img src="img/lc0-logo-thumb.jpg" class="img-round">
+                            Leela Test Reporter
+                            <small> by Alain Bellon</small>
+                        </h3>
+                    </div>
+
+                    <div class="panel-body m-3">
+                        <h3>Welcome!</h3>
+                        <br>
+                        Just copy your <b>.pgn</b> files to the /PGN folder.
+                        <br><br><br><br><br>
+                        <div class="text-right">
+                            <small>Close this browser tab and restart the application.</small>
+                        </div>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="page-footer font-small blue">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">&#169 2019 Copyright by Alain Bellon.</div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+</body>
+
+</html>
