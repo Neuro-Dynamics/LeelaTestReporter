@@ -1,4 +1,4 @@
-# LeelaTestReporter
+# Leela Test Reporter
 Tool for generating discord-postable test results from pgn files. It will let you select an anchor engine and rating, and will remember your previously entered data so you don't have to retype it every time.
 
 ## Installation and Running
