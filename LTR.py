@@ -16,12 +16,13 @@ OS = platform.system()
 
 def findPGN():
 
-    pgnFound = False
     for (dirpath, dirnames, filenames) in walk('PGN/'):
         for pgn in filenames:
-            pgnFound = True
+            fname, fext = os.path.splitext(pgn)
+            if fext == '.pgn':
+                return True
 
-    return pgnFound
+    return False
 
 
 def downloadTARGZ(url, inPath, inFile, outPath, outFile):

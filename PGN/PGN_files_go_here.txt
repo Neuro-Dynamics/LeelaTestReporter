@@ -1,0 +1,1 @@
+Copy your PGN files to this folder.
