@@ -67,6 +67,7 @@ def installTool():
         outFile = 'ordo'
         url = 'https://github.com/michiguel/Ordo/releases/download/v1.2.6/ordo-1.2.6.tar.gz'
         downloadTARGZ(url, inPath, inFile, outPath, outFile)
+        os.system('chmod 777 ordo')
 
 
 def initGUI():
@@ -106,7 +107,7 @@ def testPGN():
     # Try PGN in Ordo to see if it is valid
     # Output a minimal CSV file with the players' names
     pgn = 'PGN/'+ws.GUI['select-pgn']['value']
-    subprocess.call(['ordo.exe', '-U 0', '-s1',
+    subprocess.call(['./ordo', '-Q', '-U 0', '-s1',
                      '-p',  pgn, '-c', 'test.csv'])
 
     # Load all players from PGNs from CSV file into combo box
@@ -129,7 +130,7 @@ def analyse():
     anchor = ws.GUI['select-anchor']['value']
     anchorRating = ws.GUI['input-rating']['value']
     subprocess.call(
-        ['ordo.exe',
+        ['./ordo',
          '-Q', '-N 0', '-D', '-W', '-s500', '-V',
          '-a', anchorRating, '-A', anchor,
          '-U 0,1,2,6,4,7,8,9,10',
