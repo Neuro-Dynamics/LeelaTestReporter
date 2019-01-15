@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import server as ws
 import subprocess
 import csv
