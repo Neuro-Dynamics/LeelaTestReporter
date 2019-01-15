@@ -33,7 +33,8 @@ LTR.py
 
 ## Usage
 
-1. Wait for the web GUI to open
+1. Wait for the web GUI to open in  your browser
 2. Enter your data
 3. Press the Generate Report button
 4. Copy the report to discord
+5. Close your browser tab (in some cases you may need to close the command window as well)
