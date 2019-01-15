@@ -91,6 +91,9 @@ def initGUI():
     ws.GUI['select-pgn']['options'] = []
     for (dirpath, dirnames, filenames) in walk('PGN/'):
         for pgn in filenames:
+            fname, fext = os.path.splitext(pgn)
+            if fext != '.pgn':
+                continue
             # Load all files into combo box
             s = ''
             if len(dirpath) > 4:
